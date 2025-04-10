@@ -1,7 +1,10 @@
-<script setup></script>
+<script setup>
+const props = defineProps({
+  tag: String,
+});
+</script>
 <template>
-  <span class="rounded-2xl border-1 text-white w-auto px-4 py-1 mr-2 flex">
-    <vue-feather type="check"></vue-feather>
-    <h3 class="ml-2">Tag</h3>
+  <span class="flex justify-center items-center rounded-2xl border-l-1 border-b-1 border-white mt-2 text-white w-auto text-xs">
+    <h3>{{ props.tag }}</h3>
   </span>
 </template>

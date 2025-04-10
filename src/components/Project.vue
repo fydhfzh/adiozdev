@@ -1,17 +1,23 @@
 <script setup>
 import Tag from './Tag.vue';
+
+const repo = defineProps({
+  name: String,
+  description: String,
+  tags: Array,
+  htmlUrl: String,
+});
 </script>
 <template>
-  <div class="shadow-xs shadow-white rounded-2xl p-4 mt-4">
-    <h2 class="font-bold text-2xl">Project Title</h2>
-    <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, et iure necessitatibus, accusamus aliquid vitae nihil ut facilis fugiat veniam ipsa
-      odio dolorem neque quia minima voluptatum commodi a est.
-    </p>
-    <div class="flex mt-1">
-      <Tag />
-      <Tag />
-      <Tag />
+  <div class="pl-4 py-2 mt-2 overflow-hidden border-l-4 border-contrast shadow-contrast rounded-md rounded-l-none hover:backdrop-blur-2xl hover:bg-secondary/5">
+    <h2 class="font-bold text-lg line-clamp-1">
+      <a :href="htmlUrl" target="_blank">{{ repo.name }}</a>
+    </h2>
+    <div>
+      <p class="text-ellipsis">{{ repo.description }}</p>
     </div>
+    <!-- <div class="grid grid-cols-3 p-2 gap-2">
+      <Tag v-for="tag in repo.tags.slice(0, 3)" :tag="tag" />
+    </div> -->
   </div>
 </template>

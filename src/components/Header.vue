@@ -1,15 +1,24 @@
 <script setup>
-import BurgerNavigation from './BurgerNavigation.vue';
+import { ref } from 'vue';
 import Navigation from './Navigation.vue';
+
+const initialName = 'Fayyadh Hafizh';
+const name = ref('');
+
+const ticker = setInterval(() => {
+  if (name.value.length < initialName.length) {
+    name.value = name.value + initialName[name.value.length];
+  } else {
+    clearInterval(ticker);
+  }
+}, 50);
 </script>
 <template>
-  <div class="flex justify-between">
-    <h1 class="flex-1 p-2 font-extrabold">ADIOZ</h1>
-    <div class="flex-2">
-      <Navigation class="hidden md:flex" />
-    </div>
-    <div class="flex-1 items-end align-middle">
-      <BurgerNavigation class="block md:hidden" />
-    </div>
+  <div>
+    <h1 class="text-5xl font-extrabold">
+      <span class="animate-fade-in" v-for="c in name">{{ c }}</span>
+    </h1>
+    <h3 class="mt-2 text-lg opacity-80">Backend Engineer</h3>
+    <Navigation />
   </div>
 </template>

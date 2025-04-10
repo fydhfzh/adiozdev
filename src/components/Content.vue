@@ -1,22 +1,22 @@
 <script setup>
 import Projects from './Projects.vue';
+import Experiences from './Experiences.vue';
+import Volunteers from './Volunteers.vue';
+import Sidebar from './Sidebar.vue';
+import Profile from './Profile.vue';
+import Organizations from './Organizations.vue';
+import Footer from './Footer.vue';
 </script>
 <template>
-  <div class="flex">
-    <div class="flex-1 hidden md:inline"></div>
-    <div class="flex-2">
-      <div>
-        <br />
-        <h1 class="text-center text-6xl font-extrabold">Adioz Dev.</h1>
-        <br />
-        <p class="w-full text-justify p-4">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit optio voluptatem iste ex voluptatibus, illo unde nemo corrupti tempora eum nobis
-          animi possimus itaque earum ipsa atque ipsum, incidunt beatae!
-        </p>
-      </div>
-      <br />
-      <Projects />
-    </div>
-    <div class="flex-1 hidden md:inline"></div>
+  <div class="flex w-full xl:w-1/2">
+    <Sidebar />
+    <main class="py-24 w-1/2 pr-10 pl-5">
+      <Profile id="profile" />
+      <Experiences class="mt-20" id="experiences" />
+      <Projects class="mt-20" id="projects" />
+      <Organizations class="mt-20" id="organizations" />
+      <Volunteers class="mt-20" id="volunteers" />
+      <Footer class="mt-20" />
+    </main>
   </div>
 </template>
