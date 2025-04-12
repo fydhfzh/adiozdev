@@ -2,7 +2,7 @@
 <template>
   <section>
     <h1 class="text-3xl font-extrabold opacity-90">Profile</h1>
-    <div class="w-full justify-center items-center text-pretty opacity-75 p-2">
+    <div class="w-full justify-center items-center text-pretty opacity-75">
       <p class="text-md mt-2">
         I’m excited to start my career as a Backend Engineer, where I can apply my academic knowledge and enthusiasm for coding to real-world projects.
       </p>

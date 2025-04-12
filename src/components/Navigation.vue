@@ -11,7 +11,7 @@ const setCurrSection = (e) => {
 };
 </script>
 <template>
-  <div class="flex flex-col text-lg pt-24 gap-2.5">
+  <div class="hidden md:flex md:flex-col md:text-lg md:pt-24 md:gap-2.5">
     <a v-for="section in sections" :href="section" @click="setCurrSection" :class="[currSection == section ? 'font-bold' : 'opacity-65']"
       ><font-awesome-icon :icon="['fas', 'chevron-right']" v-if="currSection == section" />&nbsp;{{ section.charAt(1).toUpperCase() + section.substring(2) }}</a
     >

@@ -8,9 +8,9 @@ import Organizations from './Organizations.vue';
 import Footer from './Footer.vue';
 </script>
 <template>
-  <div class="flex w-full xl:w-1/2">
+  <div class="w-full md:flex xl:w-1/2">
     <Sidebar />
-    <main class="py-24 w-1/2 pr-10 pl-5">
+    <main class="pr-5 pl-5 md:w-1/2 md:py-24">
       <Profile id="profile" />
       <Experiences class="mt-20" id="experiences" />
       <Projects class="mt-20" id="projects" />
