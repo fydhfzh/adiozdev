@@ -23,14 +23,14 @@ jobs:
         run: npm run build
 
       - name: Deploy to EC2 instance
-        uses: easingthemes/ssh-deploy@v2.1.5
+        uses: easingthemes/ssh-deploy@main
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ADIOZDEV_SSH_PRIVATE_KEY}}
           REMOTE_HOST: "ec2-16-78-223-232.ap-southeast-3.compute.amazonaws.com"
           REMOTE_USER: "ec2-user"
           SOURCE: "dist/"
           TARGET: "/home/ec2-user/adiozdev/dist"
-          SCRIPT_AFTER: |
+          SCRIPT_AFTER:  |
             echo "Whoami: $(whoami)"
             which nginx
             sudo service nginx restart || echo "nginx restart failed"
