@@ -30,5 +30,7 @@ jobs:
           REMOTE_USER: "ec2-user"
           SOURCE: "dist/"
           TARGET: "/home/ec2-user/adiozdev/dist"
-          SCRIPT_AFTER: sudo service nginx restart
+          SCRIPT_AFTER: |
+            sudo service nginx restart
+            echo $RSYNC_STDOUT
           SCRIPT_AFTER_REQUIRED: true
