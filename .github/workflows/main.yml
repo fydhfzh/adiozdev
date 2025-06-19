@@ -31,6 +31,8 @@ jobs:
           SOURCE: "dist/"
           TARGET: "/home/ec2-user/adiozdev/dist"
           SCRIPT_AFTER: |
-            sudo service nginx restart
-            echo $RSYNC_STDOUT
+            echo "Whoami: $(whoami)"
+            which nginx
+            sudo service nginx restart || echo "nginx restart failed"
+            echo "[DEBUG] RSYNC output: $RSYNC_STDOUT"
           SCRIPT_AFTER_REQUIRED: true
