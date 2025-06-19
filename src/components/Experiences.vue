@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref, useTemplateRef } from 'vue';
 import Experience from './Experience.vue';
 
 const experiences = [
@@ -17,9 +18,29 @@ existing module.`,
     ],
   },
 ];
+
+const animateClass = 'transition-all animate-slide-fade-in';
+const idleClass = 'opacity-0';
+const target = useTemplateRef('target');
+const isVisible = ref(false);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true;
+      }
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  observer.observe(target.value);
+});
 </script>
 <template>
-  <section class="w-full">
+  <section ref="target" :class="['w-full', isVisible ? animateClass : idleClass]">
     <h1 class="text-3xl font-extrabold opacity-90">Experiences</h1>
     <div v-if="experiences.length > 0">
       <Experience v-for="e in experiences" v-bind="e" />

@@ -1,6 +1,29 @@
-<script setup></script>
+<script setup>
+import { onMounted, ref, useTemplateRef } from 'vue';
+
+const animateClass = 'transition-all animate-slide-fade-in';
+const idleClass = 'opacity-0';
+
+const target = useTemplateRef('target');
+const isVisible = ref(false);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true;
+      }
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  observer.observe(target.value);
+});
+</script>
 <template>
-  <section>
+  <section ref="target" :class="[isVisible ? animateClass : idleClass]">
     <h1 class="text-3xl font-extrabold opacity-90">Profile</h1>
     <div class="w-full justify-center items-center text-pretty opacity-75">
       <p class="text-md mt-2">

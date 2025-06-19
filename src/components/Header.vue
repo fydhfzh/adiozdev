@@ -1,6 +1,7 @@
 <script setup>
 import { ref } from 'vue';
 import Navigation from './Navigation.vue';
+import BurgerNavigation from './BurgerNavigation.vue';
 
 const initialName = 'Fayyadh Hafizh';
 const name = ref('');

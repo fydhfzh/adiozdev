@@ -8,7 +8,7 @@ import Organizations from './Organizations.vue';
 import Footer from './Footer.vue';
 </script>
 <template>
-  <div class="w-full md:flex xl:w-1/2">
+  <div class="w-4/5 md:flex xl:w-1/2">
     <Sidebar />
     <main class="pr-5 pl-5 md:w-1/2 md:py-24">
       <Profile id="profile" />

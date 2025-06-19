@@ -1,4 +1,5 @@
 <script setup>
+import { onMounted, ref, useTemplateRef } from 'vue';
 import Organization from './Organization.vue';
 
 const organizations = [
@@ -27,9 +28,29 @@ const organizations = [
     activity: 'Became the chief organizer of breaking the fast with orphans at B.J. Habibie orphanage and helps other work program',
   },
 ];
+
+const animateClass = 'transition-all animate-slide-fade-in';
+const idleClass = 'opacity-0';
+const target = useTemplateRef('target');
+const isVisible = ref(false);
+
+onMounted(() => {
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        isVisible.value = true;
+      }
+    },
+    {
+      threshold: 0.5,
+    }
+  );
+
+  observer.observe(target.value);
+});
 </script>
 <template>
-  <section>
+  <section ref="target" :class="[isVisible ? animateClass : idleClass]">
     <h1 class="text-3xl font-extrabold">Organizations</h1>
     <div class="lg:grid grid-cols-2 gap-2.5">
       <Organization v-for="(organization, index) in organizations" v-bind="organization" :key="index" />
