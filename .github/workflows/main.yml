@@ -26,7 +26,13 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         env:
           SSH_PRIVATE_KEY: ${{ secrets.ADIOZDEV_SSH_PRIVATE_KEY}}
-          SOURCE: "dist/"
           REMOTE_HOST: "ec2-16-78-223-232.ap-southeast-3.compute.amazonaws.com"
           REMOTE_USER: "ec2-user"
+          SOURCE: "dist/"
           TARGET: "/usr/share/nginx/html/adiozdev"
+          SCRIPT_BEFORE: |
+            sudo su
+          SCRIPT_BEFORE_REQUIRED: true
+          SCRIPT_AFTER: |
+            service nginx restart
+          SCRIPT_AFTER_REQUIRED: true
