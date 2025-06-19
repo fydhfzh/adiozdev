@@ -1,0 +1,32 @@
+name: Adiozdev Portfolio Redeployment
+
+on: push
+
+jobs:
+  deploy:
+    name: Push to EC2 Instance
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v4
+
+      - name: Install Node.js
+        uses: actions/setup_node@v4
+        with:
+          node-version: 22.x
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run build task
+        run: npm run build
+
+      - name: Deploy to EC2 instance
+        uses: easingthemes/ssh-deploy@v2.1.5
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.ADIOZDEV_SSH_PRIVATE_KEY}}
+          SOURCE: "dist/"
+          REMOTE_HOST: "ec2-16-78-223-232.ap-southeast-3.compute.amazonaws.com"
+          REMOTE_USER: "ec2-user"
+          TARGET: "/usr/share/nginx/html/adiozdev"
