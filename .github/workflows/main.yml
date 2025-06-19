@@ -35,4 +35,5 @@ jobs:
           SCRIPT_BEFORE_REQUIRED: true
           SCRIPT_AFTER: |
             service nginx restart
+            echo $RSYNC_STDOUT
           SCRIPT_AFTER_REQUIRED: true
