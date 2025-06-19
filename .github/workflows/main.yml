@@ -29,11 +29,4 @@ jobs:
           REMOTE_HOST: "ec2-16-78-223-232.ap-southeast-3.compute.amazonaws.com"
           REMOTE_USER: "ec2-user"
           SOURCE: "dist/"
-          TARGET: "/usr/share/nginx/html/adiozdev"
-          SCRIPT_BEFORE: |
-            sudo su
-          SCRIPT_BEFORE_REQUIRED: true
-          SCRIPT_AFTER: |
-            service nginx restart
-            echo $RSYNC_STDOUT
-          SCRIPT_AFTER_REQUIRED: true
+          TARGET: "/home/ec2-user/adiozdev/dist"
